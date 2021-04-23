@@ -1,0 +1,293 @@
+{
+    "Type": {
+        "type": "string",
+        "size": 1,
+        "default": "book",
+        "label": "ধরণ",
+        "header": true,
+        "values": {
+            "book": "বই",
+            "journal": "সাময়িকী",
+            "collection": "সংকলন",
+            "phdthesis": "থিসিস",
+            "dictionary": "অভিধান",
+            "film": "চলচ্চিত্র",
+            "audio": "অডিও"
+        },
+        "help": "কি ধরনের বই নির্বাচন করুন",
+        "data": "type"
+    },
+    "wikidata_item": {
+        "type": "wikibase-itemid",
+        "size": 1,
+        "default": "",
+        "label": "উইকিউপাত্ত আইটেম",
+        "header": true,
+        "data": "wikibase-itemid"
+    },
+    "Title": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "গ্রন্থের নাম",
+        "header": true,
+        "data": "title"
+    },
+    "Subtitle": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "উপশিরোনাম",
+        "help": "বইয়ের উপ-শিরোনাম",
+        "header": true,
+        "data": "subtitle"
+    },
+    "Language": {
+        "type": "langcode",
+        "size": 1,
+        "default": "bn",
+        "label": "ভাষা",
+        "header": false,
+        "data": "language"
+    },
+    "Volume": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "খণ্ড",
+        "header": true
+    },
+    "Edition": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "সংস্করণ",
+        "header": true
+    },
+    "Author": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "লেখক",
+        "header": true,
+        "delimiter": [
+            ", ",
+            " et ",
+            "\u003C/br\u003E"
+        ],
+        "data": "author"
+    },
+    "Co-author1": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সহ-লেখক",
+        "header": true,
+        "data": "author",
+        "delimiter": ";"
+    },
+    "Co-author2": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সহ-লেখক",
+        "header": true,
+        "data": "author",
+        "delimiter": ";"
+    },
+    "Co-author3": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "অন্যান্য লেখক",
+        "header": true,
+        "data": "author",
+        "delimiter": ";"
+    },
+    "Translator": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "অনুবাদক",
+        "header": true,
+        "data": "translator",
+        "delimiter": ";"
+    },
+    "Co-translator1": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সহ-অনুবাদক",
+        "header": true,
+        "data": "translator",
+        "delimiter": ";"
+    },
+    "Co-translator2": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সহ-অনুবাদক",
+        "header": true,
+        "data": "translator",
+        "delimiter": ";"
+    },
+    "Editor": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সম্পাদক",
+        "header": true,
+        "data": "editor",
+        "delimiter": ";"
+    },
+    "Co-editor1": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সহ-সম্পাদক",
+        "header": true,
+        "data": "editor",
+        "delimiter": ";"
+    },
+    "Co-editor2": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "সহ-সম্পাদক",
+        "header": true,
+        "data": "editor",
+        "delimiter": ";"
+    },
+    "Illustrator": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "অঙ্কনশিল্পী",
+        "header": true,
+        "data": "illustrator",
+        "delimiter": ";"
+    },
+    "Publisher": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "প্রকাশক",
+        "header": true,
+        "data": "publisher",
+        "delimiter": [
+            ";",
+            "asn"
+        ]
+    },
+    "Address": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "প্রকাশস্থান",
+        "header": true,
+        "data": "place",
+        "delimiter": ";"
+    },
+    "Printer": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "মুদ্রক",
+        "header": true,
+        "data": "মুদ্রক",
+        "delimiter": ";"
+    },
+    "Year": {
+        "type": "number",
+        "size": 1,
+        "default": "",
+        "label": "প্রকাশসাল",
+        "header": true,
+        "data": "year"
+    },
+    "Source": {
+        "type": "string",
+        "size": 1,
+        "default": "pdf",
+        "label": "স্ক্যান",
+        "header": true,
+        "values": {
+            "djvu": "djvu",
+            "pdf": "pdf",
+            "jpg": "jpg",
+            "png": "png",
+            "gif": "gif",
+            "tif": "tif",
+            "ogg": "ogg",
+            "webm": "webm",
+            "_empty_": "অন্যান্য"
+        }
+    },
+    "Image": {
+        "type": "string",
+        "size": 1,
+        "default": "1",
+        "label": "প্রচ্ছদের ছবি",
+        "header": true
+    },
+    "Progress": {
+        "type": "string",
+        "size": 1,
+        "default": "X",
+        "label": "প্রগতি",
+        "header": true,
+        "values": {
+            "T": "সম্পন্ন",
+            "V": "বৈধকরণ করতে হবে",
+            "C": "মুদ্রণ সংশোধন/প্রুফরিড চলিতেছে",
+            "OCR": "OCR ও প্রুফরিড করার জন্য ফাইল প্রস্তুত",
+            "L": "ফাইলে ভুল আছে (পৃষ্ঠা অনুপস্থিত, ক্রম সঠিক না, ইত্যাদি)",
+            "X": "পাতার তালিকা দরকার (প্রুফরিড করার আগে ফাইল সম্পূর্ণ,সঠিক ও ত্রুটিমুক্ত কিনা তা যাচাই করার জন্য)"
+        },
+        "data": "progress"
+    },
+    "Pages": {
+        "type": "string/line",
+        "size": 15,
+        "default": "\u003Cpagelist /\u003E",
+        "label": "পাতা",
+        "header": false,
+        "help": "",
+        "data": "pagelist"
+    },
+    "Volumes": {
+        "type": "string/line",
+        "size": 5,
+        "default": "",
+        "label": "খণ্ডসমূহ",
+        "header": true
+    },
+    "Remarks": {
+        "type": "string/line",
+        "size": 15,
+        "default": "",
+        "label": "সূচীপত্রের টেবিল",
+        "header": true
+    },
+    "Notes": {
+        "type": "string/line",
+        "size": 3,
+        "default": "",
+        "label": "মন্তব্য",
+        "header": true
+    },
+    "Header": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "শীর্ষক",
+        "header": true
+    },
+    "Footer": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "পাদদেশ",
+        "header": true
+    }
+}

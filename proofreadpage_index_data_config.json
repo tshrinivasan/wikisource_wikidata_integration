@@ -1,0 +1,293 @@
+{
+    "Type": {
+        "type": "string",
+        "size": 1,
+        "default": "book",
+        "label": "Type",
+        "header": true,
+        "values": {
+            "book": "Book",
+            "journal": "Journal",
+            "collection": "Collection",
+            "phdthesis": "Thesis",
+            "dictionary": "Dictionary",
+            "film": "Video",
+            "audio": "Audio"
+        },
+        "help": "Select what type of book", 
+        "data": "type"
+    },
+    "wikidata_item": {
+        "type": "wikibase-itemid",
+        "size": 1,
+        "default": "",
+        "label": "Wikipedia items", 
+        "header": true,
+        "data": "wikibase-itemid"
+    },
+    "Title": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Book Name", 
+        "header": true,
+        "data": "title"
+    },
+    "Subtitle": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Subtitle",
+        "help": "Book Subtitle", 
+        "header": true,
+        "data": "subtitle"
+    },
+    "Language": {
+        "type": "langcode",
+        "size": 1,
+        "default": "bn",
+        "label": "Language", 
+        "header": false,
+        "data": "language"
+    },
+    "Volume": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Volume", 
+        "header": true
+    },
+    "Edition": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Edition",
+        "header": true
+    },
+    "Author": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Author",
+        "header": true,
+        "delimiter": [
+            ", ",
+            " et ",
+            "\u003C/br\u003E"
+        ],
+        "data": "author"
+    },
+    "Co-author1": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Co-Author",
+        "header": true,
+        "data": "author",
+        "delimiter": ";"
+    },
+    "Co-author2": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Co-Author",
+        "header": true,
+        "data": "author",
+        "delimiter": ";"
+    },
+    "Co-author3": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Other Authors",
+        "header": true,
+        "data": "author",
+        "delimiter": ";"
+    },
+    "Translator": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Translator",
+        "header": true,
+        "data": "translator",
+        "delimiter": ";"
+    },
+    "Co-translator1": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Co-Translator",
+        "header": true,
+        "data": "translator",
+        "delimiter": ";"
+    },
+    "Co-translator2": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Co-Translator",
+        "header": true,
+        "data": "translator",
+        "delimiter": ";"
+    },
+    "Editor": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Editor",
+        "header": true,
+        "data": "editor",
+        "delimiter": ";"
+    },
+    "Co-editor1": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Co-Editor",
+        "header": true,
+        "data": "editor",
+        "delimiter": ";"
+    },
+    "Co-editor2": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Co-Editor",
+        "header": true,
+        "data": "editor",
+        "delimiter": ";"
+    },
+    "Illustrator": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Illustrator",
+        "header": true,
+        "data": "illustrator",
+        "delimiter": ";"
+    },
+    "Publisher": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Publisher",
+        "header": true,
+        "data": "publisher",
+        "delimiter": [
+            ";",
+            "asn"
+        ]
+    },
+    "Address": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Address",
+        "header": true,
+        "data": "place",
+        "delimiter": ";"
+    },
+    "Printer": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Printer",
+        "header": true,
+        "data": "Printer",
+        "delimiter": ";"
+    },
+    "Year": {
+        "type": "number",
+        "size": 1,
+        "default": "",
+        "label": "Year",
+        "header": true,
+        "data": "year"
+    },
+    "Source": {
+        "type": "string",
+        "size": 1,
+        "default": "pdf",
+        "label": "Source",
+        "header": true,
+        "values": {
+            "djvu": "djvu",
+            "pdf": "pdf",
+            "jpg": "jpg",
+            "png": "png",
+            "gif": "gif",
+            "tif": "tif",
+            "ogg": "ogg",
+            "webm": "webm",
+            "_empty_": "other"
+        }
+    },
+    "Image": {
+        "type": "string",
+        "size": 1,
+        "default": "1",
+        "label": "Cover Image",
+        "header": true
+    },
+    "Progress": {
+        "type": "string",
+        "size": 1,
+        "default": "X",
+        "label": "Progress",
+        "header": true,
+        "values": {
+             "T": "Done",
+             "V": "Validate",
+             "C": "Print revision / proofread in progress",
+             "OCR": "Files ready to OCR and proofread",
+             "L": "File contains errors (page missing, order incorrect, etc.)",
+             "X": "Requires page list (to verify that the file is complete, correct, and error-free before proofreading)" 
+        },
+        "data": "progress"
+    },
+    "Pages": {
+        "type": "string/line",
+        "size": 15,
+        "default": "\u003Cpagelist /\u003E",
+        "label": "Pages",
+        "header": false,
+        "help": "",
+        "data": "pagelist"
+    },
+    "Volumes": {
+        "type": "string/line",
+        "size": 5,
+        "default": "",
+        "label": "Volumes",
+        "header": true
+    },
+    "Remarks": {
+        "type": "string/line",
+        "size": 15,
+        "default": "",
+        "label": "Table of Contents",
+        "header": true
+    },
+    "Notes": {
+        "type": "string/line",
+        "size": 3,
+        "default": "",
+        "label": "Notes",
+        "header": true
+    },
+    "Header": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Header",
+        "header": true
+    },
+    "Footer": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Footer",
+        "header": true
+    }
+}

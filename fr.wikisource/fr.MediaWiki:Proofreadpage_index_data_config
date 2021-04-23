@@ -1,0 +1,127 @@
+{
+    "Type": {
+        "type": "string",
+        "size": 1,
+        "default": "book",
+        "label": "Type",
+        "help": "Valeur par défaut \"Livre\" - choisir « Journal » pour les Revues avec des articles variés, « Recueil » pour les Œuvres complètes ou les Recueils de poèmes, « Dictionnaires » pour les Dictionnaires.",
+        "values": {
+            "book": "Livre",
+            "collection": "Recueil",
+            "journal": "Journal ou revue",
+            "phdthesis": "Thèse, rapport",
+            "dictionary": "Dictionnaire, encyclopédie, ouvrage de référence"
+        },
+        "header": true,
+        "data": "type"
+    },
+    "Titre": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Titre",
+        "help": "Titre du livre tel qu’il apparaîtra dans l’espace principal, avec des [[doubles crochets]] pour créer un lien direct.",
+        "header": true,
+        "data": "title"
+    },
+    "Auteur": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Auteur(s)",
+        "help": "Le ou les auteurs, dans la forme qu’ils ont dans l’espace Auteur - exemple : [[Auteur:Jules Verne|Jules Verne]].",
+        "header": true,
+        "delimiter": [
+            ", ",
+            " et ",
+            "\u003C/br\u003E"
+        ],
+        "data": "author"
+    },
+    "wikidata_item": {
+        "type": "wikibase-itemid",
+        "size": 1,
+        "default": "",
+        "label": "Identifiant de l'entité Wikidata correspondante",
+        "help": "Identifiant de l'entité Wikidata décrivant l'edition correspondant au fac-similé. Doit être de la forme QXXX avec XXX un nombre.",
+        "header": true,
+        "data": "wikibase-itemid"
+    },
+    "Source": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Fac-similés",
+        "help": "",
+        "header": true,
+        "values": {
+            "": "",
+            "djvu": "djvu",
+            "pdf": "pdf",
+            "jpg": "jpg",
+            "png": "png",
+            "gif": "gif",
+            "tif": "tif",
+            "ogg": "ogg",
+            "ogv": "ogv"
+        }
+    },
+    "Avancement": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Avancement",
+        "help": "Avancement de la relecture du livre. Pour un livre qu’on vient de mettre en place, la valeur à utilisé est généralement \"à corriger\".",
+        "header": true,
+        "values": {
+            "": "",
+            "T": "Terminé",
+            "V": "À valider",
+            "C": "À corriger",
+            "MS": "Texte prêt à être découpé (match \u0026 split)",
+            "OCR": "Ajouter une couche texte OCR",
+            "X": "Source incomplète (extrait) ou compilation de sources différentes",
+            "L": "Fichier défectueux (lacunes, pages dans le désordre, etc)",
+            "D": "Doublon, un autre fichier existe sur lequel il est préférable de travailler"
+        }
+    },
+    "Pages": {
+        "type": "string",
+        "size": 15,
+        "default": "\u003Cpagelist /\u003E",
+        "label": "Pages",
+        "help": "Sert à caler la pagination du scan avec celle du livre - indiquer \u003Cpagelist puis pour les pages non numérotées du début 1toX=\"-\" puis indiquer à quelle page du scan correspond la page numérotée 1 dans le livre - par ex: 9=1 /\u003E",
+        "header": false,
+        "data": "pagelist"
+    },
+    "Css": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Css",
+        "help": "Permet d'indiquer une feuille de style particulière, pour certains types d'ouvrages.",
+        "header": false
+    },
+    "index": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "hidden": true,
+        "header": true
+    },
+    "header_type": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "hidden": true,
+        "header": true
+    },
+    "Language": {
+        "type": "langcode",
+        "size": 1,
+        "default": "fr",
+        "label": "Language code",
+        "hidden": true,
+        "data": "language"
+    }
+}

@@ -1,0 +1,20 @@
+#LWP-Cookies-2.0
+Set-Cookie3: GeoIP="IN:TN:Chennai:13.06:80.19:v4"; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; discard; version=0
+Set-Cookie3: WMF-Last-Access-Global="24-Mar-2021"; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; expires="2021-04-25 00:00:00Z"; HttpOnly=None; version=0
+Set-Cookie3: centralauth_Session=1cad7cd822cb2ee4635048836040c1d4; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; discard; HttpOnly=None; SameSite=None; version=0
+Set-Cookie3: centralauth_Token=053ac4e1365605fc8be1cd7028c278af; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; SameSite=None; version=0
+Set-Cookie3: centralauth_User=Tshrinivasan; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; SameSite=None; version=0
+Set-Cookie3: centralauth_ss0-Token=053ac4e1365605fc8be1cd7028c278af; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; version=0
+Set-Cookie3: centralauth_ss0-User=Tshrinivasan; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; version=0
+Set-Cookie3: ss0-centralauth_Session=1cad7cd822cb2ee4635048836040c1d4; path="/"; domain=".wikisource.org"; path_spec; domain_dot; secure; discard; HttpOnly=None; version=0
+Set-Cookie3: UseCDNCache=false; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2021-03-24 03:33:48Z"; HttpOnly=None; version=0
+Set-Cookie3: UseDC=master; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2021-03-24 03:33:48Z"; HttpOnly=None; version=0
+Set-Cookie3: WMF-Last-Access="24-Mar-2021"; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2021-04-25 00:00:00Z"; HttpOnly=None; version=0
+Set-Cookie3: bnwikisourceSession=05t8kgadq5muq9v0bkh644p5sj1il7qd; path="/"; domain="bn.wikisource.org"; path_spec; secure; discard; HttpOnly=None; SameSite=None; version=0
+Set-Cookie3: bnwikisourceUserID=4401; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; SameSite=None; version=0
+Set-Cookie3: bnwikisourceUserName=Tshrinivasan; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; SameSite=None; version=0
+Set-Cookie3: bnwikisourcess0-UserID=4401; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; version=0
+Set-Cookie3: bnwikisourcess0-UserName=Tshrinivasan; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2022-03-24 03:33:38Z"; HttpOnly=None; version=0
+Set-Cookie3: cpPosIndex="1%401616556818%23d6d5d7d25781cacd119b66b7e08b4bd8"; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2021-03-24 03:33:48Z"; HttpOnly=None; version=0
+Set-Cookie3: loginnotify_prevlogins="2021-14g57zs-l47wz40f22lbovfdkld7wb83drf69m8"; path="/"; domain="bn.wikisource.org"; path_spec; secure; expires="2021-09-20 03:33:38Z"; HttpOnly=None; version=0
+Set-Cookie3: ss0-bnwikisourceSession=05t8kgadq5muq9v0bkh644p5sj1il7qd; path="/"; domain="bn.wikisource.org"; path_spec; secure; discard; HttpOnly=None; version=0

@@ -1,0 +1,127 @@
+{
+    "Type": {
+        "type": "string",
+        "size": 1,
+        "default": "book",
+        "label": "Type",
+        "help": "Default value Book - choose Journal for Journals with various articles, Collection for Complete Works or Collections of poems, Dictionaries for Dictionaries.",
+        "values": {
+            "book": "Book",
+            "collection": "Collection",
+            "newspaper": "Newspaper or magazine",
+            "phdthesis": "Thesis, report",
+            "dictionary": "Dictionary, encyclopedia, reference work"
+        },
+        "header": true,
+        "data": "type"
+    },
+    "Title": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Title",
+        "help": "Title of the book as it will appear in the main space, with [[double brackets]] to create a direct link.",
+        "header": true,
+        "data": "title"
+    },
+    "Author": {
+        "type": "page",
+        "size": 1,
+        "default": "",
+        "label": "Author (s)",
+        "help": "The author (s), as they appear in the Author space - example: [[Author: Jules Verne | Jules Verne]].",
+        "header": true,
+        "delimit": [
+            ",",
+            "and",
+            "\u003C/br\u003E"
+        ],
+        "data": "author"
+    },
+    "wikidata_item": {
+        "type": "wikibase-itemid",
+        "size": 1,
+        "default": "",
+        "label": "Identifier of the corresponding Wikidata entity",
+        "help": "Identifier of the Wikidata entity describing the edition corresponding to the facsimile. Must be of the form QXXX with XXX a number.",
+        "header": true,
+        "data": "wikibase-itemid"
+    },
+    "Source": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Facsimiles",
+        "help": "",
+        "header": true,
+        "values": {
+            "": "",
+            "djvu": "djvu",
+            "pdf": "pdf",
+            "jpg": "jpg",
+            "png": "png",
+            "gif": "gif",
+            "tif": "tif",
+            "ogg": "ogg",
+            "ogv": "ogv"
+        }
+    },
+    "Advancement": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Advancement",
+        "help": "Progress of the review of the book. For a book that has just been set up, the value to be used is generally to correct",
+        "header": true,
+        "values": {
+            "": "",
+            "T": "Done",
+            "V": "To be validated",
+            "C": "To be corrected",
+            "MS": "Text ready to split (match \u0026 split)",
+            "OCR": "Add an OCR text layer",
+            "X": "Incomplete source (extract) or compilation from different sources",
+            "L": "Defective file (gaps, out of order pages, etc.)",
+            "D": "Duplicate, another file exists on which it is better to work"
+        }
+    },
+    "Pages": {
+        "type": "string",
+        "size": 15,
+        "default": "\u003Cpagelist/\u003E",
+        "label": "Pages",
+        "help": "Serves to match the pagination of the scan with that of the book - indicate \u003Cpagelist then for unnumbered pages from the beginning 1toX = then indicate to which page of the scan corresponds the numbered page 1 in the book - eg: 9 = 1/\u003E ",
+        "header": false,
+        "data": "pagelist"
+    },
+    "Css": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Css",
+        "help": "Used to indicate a particular style sheet, for certain types of work.",
+        "header": false
+    },
+    "index": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "hidden": true,
+        "header": true
+    },
+    "header_type": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "hidden": true,
+        "header": true
+    },
+    "Language": {
+        "type": "langcode",
+        "size": 1,
+        "default": "fr",
+        "label": "Language code",
+        "hidden": true,
+        "data": "language"
+    }
+}

@@ -1,0 +1,446 @@
+Index data:
+===========
+
+line 81
+			args.title = value .. '&nbsp;[[File:OOjs UI icon edit-ltr.svg|উইকিউপাত্তে দেখুন ও সম্পাদনা করুন|10px|baseline|class=noviewer|link=d:' .. item.id .. '#P1476]]'
+
+
+			args.title = value .. '&nbsp;[[File:OOjs UI icon edit-ltr.svg|View and edit on Wikipedia |10px|baseline|class=noviewer|link=d:' .. item.id .. '#P1476]]'
+
+
+Index_template
+
+Line 29:
+
+    	tag:wikitext(' [[Image:Wikidata.svg|10px|link=d:' .. itemId .. '|উইকিউপাত্ত আইটেম]]')
+    	tag:wikitext(' [[Image:Wikidata.svg|10px|link=d:' .. itemId .. '|Wikipedia items ]]')
+
+    	
+Line 31:
+    		tag:wikitext('[[বিষয়শ্রেণী:' .. category .. ']]')
+    		tag:wikitext('[[Category:' .. category .. ']]')
+
+Line 68:
+
+		html:wikitext('[[বিষয়শ্রেণী:উইকিউপাত্তের সঙ্গে সংযোগযুক্ত বই]]<indicator name="wikidata">[[File:Wikidata.svg|20px|উইকিউপাত্ত আইটেম|link=d:' .. item.id .. ']]</indicator>')
+        html: wikitext ('[[Category: Books linked to Wikipedia]]] <indicator name = "wikidata"> [[File: Wikidata.svg | 20px | Wikipedia items | link = d:' .. item.id .. '] ] </indicator> ') 
+        
+        
+Line 70:
+html:wikitext('[[বিষয়শ্রেণী:উইকিউপাত্তের সঙ্গে সংযোগহীন বই]]')
+html: wikitext ('[[Category: Books not connected to Wikipedia]]') 
+
+Line 117:
+    		addRow(metadataTable, 'নাম', withWikidataLink(args.title, 'উইকিউপাত্তের সঙ্গে সংযোগযুক্ত বই'))
+            addRow (metadataTable, 'name', withWikidataLink (args.title, 'Books linked to Wikipedia')) 
+            
+Line 119:
+     addRow(metadataTable, 'নাম', '[[' .. args.title .. ']]')
+     addRow(metadataTable, 'Name', '[[' .. args.title .. ']]')
+     
+Line 122:
+    	mw.addWarning('গ্রন্থের নাম যোগ করা প্রয়োজন')
+        mw.addWarning ('Book name needs to be added')
+
+Line 125:
+	addRow(metadataTable, 'উপশিরোনাম', withWikidataLink(args.subtitle))
+addRow (metadataTable, 'subtitle', withWikidataLink (args.subtitle))
+
+Line 128
+
+     addRow(metadataTable, 'খণ্ড', '[[' .. args.volume .. ']]')
+     addRow (metadataTable, 'segment', '[[' .. args.volume .. ']]') 
+
+Line 133:
+
+	addRow(metadataTable, 'সংস্করণ', '[[' .. args.edition .. ']]')
+addRow (metadataTable, 'version', '[[' .. args.edition .. ']]') 
+
+
+Line 139:
+    addRow(metadataTable, 'লেখক', withWikidataLink(args.author))
+    addRow(metadataTable, 'Author', withWikidataLink(args.author))
+    
+Line 141
+
+   addRow(metadataTable, 'লেখক', '{{Al|' .. args.author  .. '}}')
+   addRow(metadataTable, 'Author', '{{Al|' .. args.author  .. '}}')
+
+Line 148
+
+	addRow(metadataTable, 'অনুবাদক', withWikidataLink(args.translator))
+	addRow(metadataTable, 'Translator', withWikidataLink(args.translator))
+
+Line 150
+   addRow(metadataTable, 'অনুবাদক', '{{Al|' .. args.translator .. '}}')
+   addRow(metadataTable, 'Translator', '{{Al|' .. args.translator .. '}}')
+   
+Line 157
+
+	addRow(metadataTable, 'সম্পাদক', withWikidataLink(args.editor))
+	addRow(metadataTable, 'Editor', withWikidataLink(args.editor))
+
+Line 159
+
+   addRow(metadataTable, 'সম্পাদক', '{{Al|' .. args.editor .. '}}')
+   addRow(metadataTable, 'Editor', '{{Al|' .. args.editor .. '}}')
+   
+   
+Line 164:
+	addRow(metadataTable, 'অঙ্কনশিল্পী', withWikidataLink(args.illustrator))
+	addRow(metadataTable, 'Illustrator', withWikidataLink(args.illustrator))
+
+Line 168:
+	addRow(metadataTable, 'প্রকাশক', withWikidataLink(args.publisher))
+	addRow(metadataTable, 'Publisher', withWikidataLink(args.publisher))
+
+Line 170:
+   addRow(metadataTable, 'Publisher', '[[Publisher:' .. args.publisher .. '|' .. args.publisher .. ']]')
+   addRow(metadataTable, 'Publisher', '[[Publisher:' .. args.publisher .. '|' .. args.publisher .. ']]')
+
+Line 175
+	addRow(metadataTable, 'প্রকাশস্থান', withWikidataLink(args.address))
+	addRow(metadataTable, 'Address', withWikidataLink(args.address))
+
+Line 178
+	addRow(metadataTable, 'প্রকাশসাল', '[[' .. args.year .. ']]' )
+	addRow(metadataTable, 'Year', '[[' .. args.year .. ']]' )
+	
+Line 182
+	addRow(metadataTable, 'মুদ্রক', withWikidataLink(args.printer))
+	addRow(metadataTable, 'Printer', withWikidataLink(args.printer))
+	
+Line 184
+
+    addRow(metadataTable, 'উৎস', '[[:File:' .. mw.title.getCurrentTitle().text .. '|' .. args.source .. ']]')
+	addRow(metadataTable, 'Source', '[[:File:' .. mw.title.getCurrentTitle().text .. '|' .. args.source .. ']]')
+
+
+Line 190
+
+		addRow(metadataTable, 'উৎস', args.source)
+		addRow(metadataTable, 'Source', args.source)
+
+Line 193
+		addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট বৈধকরণ করা হয়েছে]][[:বিষয়শ্রেণী:নির্ঘণ্ট বৈধকরণ করা হয়েছে|সকল পাতা বৈধকরণ করার দ্বারা কাজ সম্পূর্ণ করা হয়েছে]]')
+        addRow (metadataTable, 'progress', '[[Category: Schedule validated]] [[: Category: Schedule validated. Work completed by validating all pages]]') 
+	
+Line 194
+		addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট মুদ্রণ সংশোধন করা হয়েছে]][[:বিষয়শ্রেণী:নির্ঘণ্ট মুদ্রণ সংশোধন করা হয়েছে|সকল পাতার মুদ্রণ সংশোধন করা হয়েছে কিন্তু বৈধকরণ করা হয়নি]]')
+        addRow (metadataTable, 'progress', '[[Category: Schedule print modified]] [[: Category: Schedule print modified. All page print modified but not validated]]') 
+
+Line 195
+		addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট মুদ্রণ সংশোধন করা হয়নি]][[:বিষয়শ্রেণী:নির্ঘণ্ট মুদ্রণ সংশোধন করা হয়নি|সকল পাতার মুদ্রণ সংশোধন করা হয়নি]]')
+        addRow (metadataTable, 'Progress', '[[Category: Schedule print not modified]] [[: Category: Schedule print not modified | All page print not modified]]') 
+        
+Line 197
+        addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট-ওসিআর ও মুদ্রণ সংশোধনের জন্য প্রস্তুত]][[:বিষয়শ্রেণী:নির্ঘণ্ট-ওসিআর ও মুদ্রণ সংশোধনের জন্য প্রস্তুত|ওসিআর ও মুদ্রণ সংশোধনের জন্য প্রস্তুত]]')
+        addRow (metadataTable, 'progress',' [[Category: Schedule-OCR and print modification ready]] [[: Category: Schedule-OCR and print modification ready | OCR and print modification ready]] ') 
+        
+Line 199
+    addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট-ফাইলকে ঠিক করা প্রয়োজন]]<span style="color: #FF0000; ">[[:বিষয়শ্রেণী:নির্ঘণ্ট-ফাইলকে ঠিক করা প্রয়োজন|মুদ্রণ সংশোধনের আগে উৎস ফাইলকে ঠিক করা প্রয়োজন]]</span>')
+    addRow (metadataTable, 'progress',' [[Category: Schedule-file needs to be fixed]] <span style = "color: # FF0000;"> [[: Category: Schedule-file needs to be fixed. Source file before print modification Need to fix]]] </span> ') 
+
+Line 201
+    addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট-ফাইলকে পরীক্ষা করা প্রয়োজন]][[:বিষয়শ্রেণী:নির্ঘণ্ট-ফাইলকে পরীক্ষা করা প্রয়োজন|মুদ্রণ সংশোধনের আগে সকল কিছু পরীক্ষা করে পাতার তালিকা তৈরি করুন]]')
+    addRow (metadataTable, 'Progress', '[[Category: Schedule-file needs to be checked]] [[: Category: Schedule-file needs to be checked. Check everything before printing modification]]') 
+
+Line 203
+    addRow(metadataTable, 'প্রগতি', '[[বিষয়শ্রেণী:নির্ঘণ্ট - অজ্ঞাত অগ্রগতি]][[:বিষয়শ্রেণী:নির্ঘণ্ট - অজ্ঞাত অগ্রগতি|অজ্ঞাত অগ্রগতি]]')
+    addRow (metadataTable, 'Progress', '[[Category: Schedule - Unknown progress]] [[: Category: Schedule - Unknown progress | Unknown progress]]') 
+
+Line 205
+	addRow(metadataTable, 'খণ্ডসমূহ', args.volumes)
+    addRow (metadataTable, 'Volumes', args.volumes) 
+    
+Line 209
+		left:tag('h3'):wikitext('বইয়ের পাতাগুলি')
+        left: tag ('h3'): wikitext ('book pages') 
+        
+Line 216
+        mw.addWarning('পাতার তালিকা তৈরি করুন')
+        mw.addWarning ('Create page list') 
+        
+Line 238
+		html:wikitext('[[বিষয়শ্রেণী:নির্ঘণ্ট - বই]]')
+html: wikitext ('[[Category: Schedules - Books]]') 
+
+Line 240
+html:wikitext('[[বিষয়শ্রেণী:নির্ঘণ্ট - সাময়িকী‎]]')
+html: wikitext ('[[Category: Schedules - Journals]]') 
+
+Line 242
+		html:wikitext('[[বিষয়শ্রেণী:নির্ঘণ্ট - সংকলন‎]]')
+        html: wikitext ('[[Category: Schedules - Collections]]') 
+
+Line 244
+		html:wikitext('[[বিষয়শ্রেণী:নির্ঘণ্ট - অভিধান‎]]')
+        html: wikitext ('[[Category: Schedules - Dictionary]]') 
+        
+        
+Line 246
+
+		html:wikitext('[[বিষয়শ্রেণী:নির্ঘণ্ট - থিসিস‎]]')
+        html: wikitext ('[[Category: Schedules - Thesis]]') 
+
+Line 248
+
+	html:wikitext('[[বিষয়শ্রেণী:নির্ঘণ্ট]]')
+    html: wikitext ('[[Category: Schedule]]') 
+        
+Line 251
+		html:wikitext('[[বিষয়শ্রেণী:দেজাভু নির্ঘণ্ট পাতা]]')
+        html: wikitext ('[[Category: Deja Vu schedule pages]]') 
+        
+Line 253
+
+    html:wikitext('[[বিষয়শ্রেণী:পিডিএফ নির্ঘণ্ট পাতা‎]]')
+    html: wikitext ('[[Category: PDF schedule page]]') 
+
+Line 255
+    html:wikitext('[[বিষয়শ্রেণী:ওজিজি নির্ঘণ্ট পাতা‎]]')
+    html: wikitext ('[[Category: OGG schedule page]]') 
+
+Line 257
+
+    html:wikitext('[[বিষয়শ্রেণী:ওয়েবএম নির্ঘণ্ট পাতা‎]]')
+    html: wikitext ('[[Category: WebM schedule page]]') 
+
+Line 260
+
+    html:wikitext('[[বিষয়শ্রেণী:সূচীপত্রবিহীন নির্ঘণ্ট পাতা]]')
+    html: wikitext ('[[Category: Indexed schedule pages]]')     
+
+
+
+    
+proofreadpage_index_data_config.json
+
+
+Line 6
+
+        "label": "ধরণ",
+        "label": "Type",
+        
+line 9-15
+
+            "book": "বই",
+            "journal": "সাময়িকী",
+            "collection": "সংকলন",
+            "phdthesis": "থিসিস",
+            "dictionary": "অভিধান",
+            "film": "চলচ্চিত্র",
+            "audio": "অডিও"
+            
+            
+            
+            "book": "Book",
+            "journal": "Journal",
+            "collection": "Collection",
+            "phdthesis": "Thesis",
+            "dictionary": "Dictionary",
+            "film": "Video",
+            "audio": "Audio"
+            
+
+Line 17
+
+        "help": "কি ধরনের বই নির্বাচন করুন",
+        "help": "Select what type of book", 
+        
+        
+Line 24
+
+        "label": "উইকিউপাত্ত আইটেম",
+        "label": "Wikipedia items", 
+        
+Line 32
+
+        "label": "গ্রন্থের নাম",
+        "label": "Book Name", 
+        
+
+Line 40-41
+
+        "label": "উপশিরোনাম",
+        "help": "বইয়ের উপ-শিরোনাম",
+        
+        
+        "label": "Subtitle",
+         "help": "Book Subtitle", 
+         
+         
+Line 49
+
+        "label": "ভাষা",
+        "label": "Language", 
+        
+        
+Line 57
+
+        "label": "খণ্ড",
+        "label": "Volume", 
+        
+Line 64
+
+        "label": "সংস্করণ",
+        "label": "Edition",
+        
+Line 71
+
+        "label": "লেখক",
+        "label": "Author",
+
+Line 84
+
+        "label": "সহ-লেখক",
+        "label": "Co-Author",
+
+Line 93        
+
+        "label": "সহ-লেখক",
+        "label": "Co-Author",
+
+Line 102
+
+        "label": "অন্যান্য লেখক",
+        "label": "Other Authors",
+        
+Line 111
+
+        "label": "অনুবাদক",
+        "label": "Translator",
+        
+Line 120
+
+        "label": "সহ-অনুবাদক",
+        "label": "Co-Translator",
+        
+Line 129
+
+        "label": "সহ-অনুবাদক",
+        "label": "Co-Translator",
+
+Line 138
+        "label": "সম্পাদক",
+        "label": "Editor",
+
+        
+Line 147
+        "label": "সহ-সম্পাদক",
+        "label": "Co-Editor",
+        
+Line 156
+
+        "label": "সহ-সম্পাদক",
+        "label": "Co-Editor",
+
+Line 165
+
+        "label": "অঙ্কনশিল্পী",
+        "label": "Illustrator",
+
+Line 174
+
+        "label": "প্রকাশক",
+        "label": "Publisher",
+
+Line 186
+
+        "label": "প্রকাশস্থান",
+        "label": "Address",
+        
+Line 195
+
+        "label": "মুদ্রক",
+        "label": "Printer",
+
+Line 197
+
+        "data": "মুদ্রক",
+        "data": "Printer",
+        
+Line 204
+
+        "label": "প্রকাশসাল",
+        "label": "Year",
+
+Line 212
+
+        "label": "স্ক্যান",
+        "label": "Source",
+        
+Line 223
+            "_empty_": "অন্যান্য"
+            "_empty_": "Other"
+            
+Line 230
+        "label": "প্রচ্ছদের ছবি",
+        "label": "Cover Image",
+
+Line 237
+
+        "label": "প্রগতি",
+        "label": "Progress",
+        
+Line 240-245
+
+            "T": "সম্পন্ন",
+            "V": "বৈধকরণ করতে হবে",
+            "C": "মুদ্রণ সংশোধন/প্রুফরিড চলিতেছে",
+            "OCR": "OCR ও প্রুফরিড করার জন্য ফাইল প্রস্তুত",
+            "L": "ফাইলে ভুল আছে (পৃষ্ঠা অনুপস্থিত, ক্রম সঠিক না, ইত্যাদি)",
+            "X": "পাতার তালিকা দরকার (প্রুফরিড করার আগে ফাইল সম্পূর্ণ,সঠিক ও ত্রুটিমুক্ত কিনা তা যাচাই করার জন্য)"
+            
+            
+            "T": "Done",
+             "V": "Validate",
+             "C": "Print revision / proofread in progress",
+             "OCR": "Files ready to OCR and proofread",
+             "L": "File contains errors (page missing, order incorrect, etc.)",
+             "X": "Requires page list (to verify that the file is complete, correct, and error-free before proofreading)" 
+             
+Line 253
+
+        "label": "পাতা",
+        "label": "Pages",
+
+        
+Line 262
+
+        "label": "খণ্ডসমূহ",
+        "label": "Volumes",
+        
+Line 269
+
+        "label": "সূচীপত্রের টেবিল",
+        "label": "Table of Contents",
+        
+Line 276
+
+        "label": "মন্তব্য",
+        "label": "Notes",
+
+Line 283
+
+        "label": "শীর্ষক",
+        "label": "Header",
+
+Line 290
+
+        "label": "পাদদেশ",
+        "label": "Footer",
+
+        
+
+
+
+
+
+
+
+
+
+
+        
+
