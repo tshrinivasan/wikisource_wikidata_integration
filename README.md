@@ -1,6 +1,6 @@
 # Wikisource Wikidata Integration
 
-We have three file here.
+We have three file here, in the main folder of the repo. Ignore the folders and content there for now.
 
 1. Index_template
 2. Index_data
