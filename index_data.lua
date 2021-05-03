@@ -13,14 +13,19 @@ local indexToWikidata = {
     ['subtitle'] =  'P1680',
     ['volume'] = 'P478',
     ['edition'] = 'P393',   
-    ['author'] = 'P50',
+    ['author'] = 'P253075',
     ['translator'] = 'P655',
-    ['editor'] = 'P98',
+    ['editor'] = 'P123',
     ['illustrator'] = 'P110',
-    ['publisher'] = 'P123',
+    ['publisher'] = 'P760',
     ['printer'] = 'P872',
     ['address'] = 'P291',
---    ['year'] = 'P577',
+    ['publishedin'] = 'P253129',
+    ['year'] = 'P766',
+    ['viaf'] = 'P752',
+    ['parts'] = 'P253130',
+
+
 }
 
 function indexDataWithWikidata(frame)
@@ -36,7 +41,7 @@ function indexDataWithWikidata(frame)
 	if args.wikidata_item then
 		item = mw.wikibase.getEntity(args.wikidata_item)
 		if item == nil then
-			mw.addWarning('L\'identifiant d\'Wikidata entity [[d:' .. args.wikidata_item .. '|' .. args.wikidata_item .. ']] put in the "Wikidata entity" parameter of the Book page: does not seem valid.') 
+			mw.addWarning('The Wikidata entity identifier [[d:' .. args.wikidata_item .. '|' .. args.wikidata_item .. ']] put in the "Wikidata entity" parameter of the Book page: does not seem valid.') 
 		end
 	end
 	if not item then
@@ -69,7 +74,8 @@ function indexDataWithWikidata(frame)
 	
 	-- title from Wikidata
 	if not args.title then
-		local value = item:formatStatements('P1476')['value']
+		--local value = item:formatStatements('P1476')['value']
+		local value = item:formatStatements('P711')['value'] or ''
 		if value == '' then
 			value = item:getLabel() or ''
 		end
@@ -78,13 +84,13 @@ function indexDataWithWikidata(frame)
 			if siteLink then
 				value = '[[' .. siteLink .. '|' .. value .. ']]'
 			end
-			args.title = value .. '&nbsp;[[File:OOjs UI icon edit-ltr.svg|View and edit on Wikipedia |10px|baseline|class=noviewer|link=d:' .. item.id .. '#P1476]]'
+			args.title = value .. '&nbsp;[[File:OOjs UI icon edit-ltr.svg|View and edit data on Wikidata|10px|baseline|class=noviewer|link=d:' .. item.id .. '#P1476]]'
 		end
 	end
 
     -- year property
     if not args.year then
-		for _, statement in pairs(item:getBestStatements('P577')) do
+		for _, statement in pairs(item:getBestStatements('P766')) do
 			if statement.mainsnak.datavalue ~= nil then
 				local current_year = statement.mainsnak.datavalue.value.time
                 args['year'] = mw.ustring.sub(current_year, 2, 5)
@@ -114,7 +120,5 @@ local p = {}
 function p.indexDataWithWikidata(frame)
     return indexDataWithWikidata(frame)
 end
-
-
  
 return p

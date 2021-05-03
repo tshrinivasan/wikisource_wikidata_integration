@@ -26,9 +26,9 @@ function addWikidataToLink(page, label, category)
     local itemId = mw.wikibase.getEntityIdForTitle(title.fullText)
 	tag:wikitext('[[' .. page .. '|' .. label .. ']]')
     if itemId ~= nil then
-    	tag:wikitext(' [[Image:Wikidata.svg|10px|link=d:' .. itemId .. '|Wikipedia items ]]')
+    	tag:wikitext(' [[Image:Wikidata.svg|10px|link=d:' .. itemId .. '|View feature on Wikidata]]')
     	if category ~= nil then
-    		tag:wikitext('[[Category:' .. category .. ']]')
+    		tag:wikitext('[[category:' .. category .. ']]')
     	end
     end
     return tostring(tag)
@@ -65,9 +65,9 @@ function indexTemplate(frame)
 	local html = mw.html.create()
 	
 	if item then
-		html: wikitext ('[[Category: Books linked to Wikipedia]]] <indicator name = "wikidata"> [[File: Wikidata.svg | 20px | Wikipedia items | link = d:' .. item.id .. '] ] </indicator> ') 
+		html:wikitext('[[Category: Books with a Wikidata ID]]<indicator name="wikidata">[[File:Wikidata.svg|20px|élément Wikidata|link=d:' .. item.id .. ']]</indicator>')
         else
-        html: wikitext ('[[Category: Books not connected to Wikipedia]]') 
+        html:wikitext('[[Category: Books without a Wikidata ID]]')
 	end
 
     --Left part
@@ -91,11 +91,11 @@ function indexTemplate(frame)
         else
             -- this is an other file
             imageTitle = mw.title.new(args.image, "Media")
-            -- TODO put a category for books with a cover that is not from the DJVU / PDF 
+            -- TODO mettre une catégorie pour les livres ayant une couverture qui ne provient pas du DJVU/PDF
         end
         if imageTitle == nil then
             imageContainer:wikitext(args.image)
-            -- TODO put a maintenance category here when the cover is missing 
+            -- TODO mettre une catégorie de maintenance ici lorsque la couverture est manquante
         else
             local imageName, imagePage = splitFileNameInFileAndPage(imageTitle)
             if imagePage ~= nil then
@@ -114,23 +114,23 @@ function indexTemplate(frame)
 
     if args.title then
        if item then
-    		addRow (metadataTable, 'name', withWikidataLink (args.title, 'Books linked to Wikipedia')) 
-else 
-     addRow(metadataTable, 'Name', '[[' .. args.title .. ']]')
+    		addRow(metadataTable, 'Title', withWikidataLink(args.title, 'Books with a Wikidata link'))
+		else 
+    		addRow(metadataTable, 'Title', '[[' .. args.title .. ']]')
     	end
     else
-    	mw.addWarning ('Book name needs to be added')
+    	mw.addWarning('You must enter the title field of the form')
     end
 
-	addRow (metadataTable, 'subtitle', withWikidataLink (args.subtitle))
+	addRow(metadataTable, 'Subtitle', withWikidataLink(args.subtitle))
 
 if args.volume then
-     addRow (metadataTable, 'segment', '[[' .. args.volume .. ']]') 
+     addRow(metadataTable, 'Volume', '{{#invoke:ConvertDigit|main|' .. args.volume .. '}}')
 else 
 end
 
 if args.edition then
-	addRow (metadataTable, 'version', '[[' .. args.edition .. ']]') 
+	addRow(metadataTable, 'Edition', '{{#invoke:ConvertDigit|main|' .. args.edition .. '}}')
 else 
 end
 
@@ -172,10 +172,12 @@ if item then
  else
 end
 
+ addRow(metadataTable, 'Published In', withWikidataLink(args.publishedin))
+
 	addRow(metadataTable, 'Address', withWikidataLink(args.address))
 
     if args.year then
-	addRow(metadataTable, 'Year', '[[' .. args.year .. ']]' )
+	addRow(metadataTable, 'Year', withWikidataLink(args.year))
 else 
 end
 
@@ -190,30 +192,32 @@ end
 		addRow(metadataTable, 'Source', args.source)
 	end
 	if args.progress == 'T' then
-        addRow (metadataTable, 'progress', '[[Category: Schedule validated]] [[: Category: Schedule validated. Work completed by validating all pages]]') 	elseif args.progress == 'V' then
-        addRow (metadataTable, 'progress', '[[Category: Schedule print modified]] [[: Category: Schedule print modified. All page print modified but not validated]]') 	elseif args.progress == 'C' then
-		addRow (metadataTable, 'Progress', '[[Category: Schedule print not modified]] [[: Category: Schedule print not modified | All page print not modified]]') 
+		addRow(metadataTable, 'Progress', '[[Category:Completed Books]] [[:Category:Completed Books | Completed]]')
+	elseif args.progress == 'V' then
+		addRow(metadataTable, 'Progress', '[[category:Books to validate]] [[:Category:Books to validate | To validate]]')
+	elseif args.progress == 'C' then
+		addRow(metadataTable, 'Progress', '[[category:Books to correct]] [[:category:Books to correct | To correct]]')
 	elseif args.progress == 'OCR' then
-		addRow (metadataTable, 'progress',' [[Category: Schedule-OCR and print modification ready]] [[: Category: Schedule-OCR and print modification ready | OCR and print modification ready]] ')
+		addRow(metadataTable, 'Progress', '[[category:Books without a text layer]] [[:category:Books without a text layer | Add an OCR text layer]]')
 	elseif args.progress == 'L' then
-		addRow (metadataTable, 'progress',' [[Category: Schedule-file needs to be fixed]] <span style = "color: # FF0000;"> [[: Category: Schedule-file needs to be fixed. Source file before print modification Need to fix]]] </span> ') 
+		addRow(metadataTable, 'Progress', '[[category:Books to repair]] <span style = "color: # FF0000;"> [[:category: Books to repair | Defective source file]]</span>')
    elseif args.progress == 'X' then
-		addRow (metadataTable, 'Progress', '[[Category: Schedule-file needs to be checked]] [[: Category: Schedule-file needs to be checked. Check everything before printing modification]]') 
+		addRow(metadataTable, 'Progress', '[[category:Extracts and compilations]] [[:category:Extracts and compilations | Incomplete source:extract or compilation]]')
 	else
-		addRow (metadataTable, 'Progress', '[[Category: Schedule - Unknown progress]] [[: Category: Schedule - Unknown progress | Unknown progress]]') 
+		addRow(metadataTable, 'Progress', '[[Category:Unknown progress books]] [[:category:Unknown progress books | Unknown progress]]')
 	end
-	addRow(metadataTable, 'Volumes', args.volumes)
+	addRow(metadataTable, 'Series', args.volumes)
 	
 	if args.pages then
 		left:tag('div'):css('clear', 'both')
-		left: tag ('h3'): wikitext ('book pages') 
+            left:tag('h3'):wikitext('Pages')
 		left:tag('div'):attr('id', 'pagelist'):css({
 			background = '#F0F0F0',
 			['padding-left'] = '0.5em',
 			['text-align'] = 'justify'
 		}):newline():wikitext(args.pages):newline()
 	else
-		mw.addWarning ('Create page list') 
+		mw.addWarning('You must enter the pagination of the facsimile (Pages field) ')
 	end
 
 	if args.remarks or args.notes then
@@ -235,29 +239,29 @@ end
 	end
 	
 	if args.type == 'book' then
-		html: wikitext ('[[Category: Schedules - Books]]') 
+		html:wikitext('[[Category: Index - Books]] ')
 	elseif args.type == 'journal' then
-		html: wikitext ('[[Category: Schedules - journal]]') 
+		html:wikitext('[[Category: Index - Periodicals]] ')
 	 elseif args.type == 'collection' then
-        html: wikitext ('[[Category: Schedules - Collections]]') 
+		html:wikitext('[[Category: Index - Collections]] ')
 	elseif args.type == 'dictionary' then
-        html: wikitext ('[[Category: Schedules - Dictionary]]') 
+		html:wikitext('[[Category: Index - Dictionaries]] ')
 	elseif args.type == 'phdthesis' then
-        html: wikitext ('[[Category: Schedules - Thesis]]') 
+		html:wikitext('[[Category: Index - Theses]] ')
 	end
-	html: wikitext ('[[Category: Schedule]]') 
+	html:wikitext('[[Category: Index]] ')
 
 	if args.source ~= 'djvu' then
-		html: wikitext ('[[Category: Deja Vu schedule pages]]') 
+		html:wikitext('[[Category: Non djvu book]] ')
 	elseif args.source == 'pdf' then
-		html: wikitext ('[[Category: PDF schedule page]]') 
+		html: wikitext ('[[Category: PDF book]]') 
 	elseif args.source == 'ogg' then
-		html: wikitext ('[[Category: OGG schedule page]]') 
+		html: wikitext ('[[Category: OGG file]]') 
 	elseif args.source == 'webm' then
-		html: wikitext ('[[Category: WebM schedule page]]') 
+		html: wikitext ('[[Category: webm file]]') 
 	end
 	if not args.remarks then
-		html: wikitext ('[[Category: Indexed schedule pages]]') 
+		html: wikitext ('[[Category: Indexed pages]]') 
 	end
 
 	return tostring(html)

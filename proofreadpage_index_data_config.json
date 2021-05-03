@@ -9,19 +9,19 @@
             "book": "Book",
             "journal": "Journal",
             "collection": "Collection",
-            "phdthesis": "Thesis",
+            "phdthesis": "Phdthesis",
             "dictionary": "Dictionary",
-            "film": "Video",
+            "film": "Film",
             "audio": "Audio"
         },
-        "help": "Select what type of book", 
+        "help": "Select the type of the book",
         "data": "type"
     },
     "wikidata_item": {
         "type": "wikibase-itemid",
         "size": 1,
         "default": "",
-        "label": "Wikipedia items", 
+        "label": "Wikidata Item",
         "header": true,
         "data": "wikibase-itemid"
     },
@@ -29,7 +29,7 @@
         "type": "page",
         "size": 1,
         "default": "",
-        "label": "Book Name", 
+        "label": "Book Name",
         "header": true,
         "data": "title"
     },
@@ -38,15 +38,15 @@
         "size": 1,
         "default": "",
         "label": "Subtitle",
-        "help": "Book Subtitle", 
+        "help": "Book Subtitle",
         "header": true,
         "data": "subtitle"
     },
     "Language": {
         "type": "langcode",
         "size": 1,
-        "default": "bn",
-        "label": "Language", 
+        "default": "en",
+        "label": "Language",
         "header": false,
         "data": "language"
     },
@@ -54,7 +54,7 @@
         "type": "string",
         "size": 1,
         "default": "",
-        "label": "Volume", 
+        "label": "Volume",
         "header": true
     },
     "Edition": {
@@ -81,7 +81,7 @@
         "type": "page",
         "size": 1,
         "default": "",
-        "label": "Co-Author",
+        "label": "Co-author",
         "header": true,
         "data": "author",
         "delimiter": ";"
@@ -90,7 +90,7 @@
         "type": "page",
         "size": 1,
         "default": "",
-        "label": "Co-Author",
+        "label": "Co-author1",
         "header": true,
         "data": "author",
         "delimiter": ";"
@@ -99,7 +99,7 @@
         "type": "page",
         "size": 1,
         "default": "",
-        "label": "Other Authors",
+        "label": "Co-author1",
         "header": true,
         "data": "author",
         "delimiter": ";"
@@ -237,12 +237,12 @@
         "label": "Progress",
         "header": true,
         "values": {
-             "T": "Done",
-             "V": "Validate",
-             "C": "Print revision / proofread in progress",
-             "OCR": "Files ready to OCR and proofread",
-             "L": "File contains errors (page missing, order incorrect, etc.)",
-             "X": "Requires page list (to verify that the file is complete, correct, and error-free before proofreading)" 
+            "T": "Done",
+            "V": "Validate",
+            "C": "Print revision / proofread in progress",
+            "OCR": "File ready to OCR and proofread",
+            "L": "File contains errors (page missing, order incorrect, etc.)",
+            "X": "Requires page list (to verify that the file is complete, correct, and error-free before proofreading)"
         },
         "data": "progress"
     },
@@ -266,7 +266,7 @@
         "type": "string/line",
         "size": 15,
         "default": "",
-        "label": "Table of Contents",
+        "label": "Remarks",
         "header": true
     },
     "Notes": {
