@@ -22,7 +22,6 @@ local indexToWikidata = {
     ['address'] = 'P291',
     ['publishedin'] = 'P253129',
     ['year'] = 'P766',
-    ['viaf'] = 'P752',
     ['parts'] = 'P253130',
 
 

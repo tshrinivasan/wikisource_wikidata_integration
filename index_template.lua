@@ -65,7 +65,7 @@ function indexTemplate(frame)
 	local html = mw.html.create()
 	
 	if item then
-		html:wikitext('[[Category: Books with a Wikidata ID]]<indicator name="wikidata">[[File:Wikidata.svg|20px|élément Wikidata|link=d:' .. item.id .. ']]</indicator>')
+		html:wikitext('[[Category: Books with a Wikidata ID]]<indicator name="wikidata">[[File:Wikidata.svg|20px|element Wikidata|link=d:' .. item.id .. ']]</indicator>')
         else
         html:wikitext('[[Category: Books without a Wikidata ID]]')
 	end
@@ -91,11 +91,9 @@ function indexTemplate(frame)
         else
             -- this is an other file
             imageTitle = mw.title.new(args.image, "Media")
-            -- TODO mettre une catégorie pour les livres ayant une couverture qui ne provient pas du DJVU/PDF
         end
         if imageTitle == nil then
             imageContainer:wikitext(args.image)
-            -- TODO mettre une catégorie de maintenance ici lorsque la couverture est manquante
         else
             local imageName, imagePage = splitFileNameInFileAndPage(imageTitle)
             if imagePage ~= nil then
@@ -114,7 +112,7 @@ function indexTemplate(frame)
 
     if args.title then
        if item then
-    		addRow(metadataTable, 'Title', withWikidataLink(args.title, 'Books with a Wikidata link'))
+    		addRow(metadataTable, 'Title', withWikidataLink(args.title))
 		else 
     		addRow(metadataTable, 'Title', '[[' .. args.title .. ']]')
     	end
@@ -124,70 +122,116 @@ function indexTemplate(frame)
 
 	addRow(metadataTable, 'Subtitle', withWikidataLink(args.subtitle))
 
-if args.volume then
-     addRow(metadataTable, 'Volume', '{{#invoke:ConvertDigit|main|' .. args.volume .. '}}')
-else 
-end
+    if args.volume then
+        addRow(metadataTable, 'Volume', '[[' .. args.volume .. ']]' )
+        html:wikitext('[[Category: Books with Volume]]')
+    else 
+        html:wikitext('[[Category: Books without Volume]]')
+    end
 
-if args.edition then
-	addRow(metadataTable, 'Edition', '{{#invoke:ConvertDigit|main|' .. args.edition .. '}}')
-else 
-end
 
-if args.author then
-if item then
-    addRow(metadataTable, 'Author', withWikidataLink(args.author))
-  else 
-   addRow(metadataTable, 'Author', '{{Al|' .. args.author  .. '}}')
- end
- else
-end
+    if args.edition then
+        addRow(metadataTable, 'Edition', '[[' .. args.edition .. ']]')
+        html:wikitext('[[Category: Books with Edition]]')
+    else 
+        html:wikitext('[[Category: Books without Edition]]')
+    end
 
-if args.translator then
-if item then
-	addRow(metadataTable, 'Translator', withWikidataLink(args.translator))
-  else 
-   addRow(metadataTable, 'Translator', '{{Al|' .. args.translator .. '}}')
- end
- else
-end
+    if args.author then
+    if item then
+        addRow(metadataTable, 'Author', withWikidataLink(args.author))
+        html:wikitext('[[Category: Books with Author]]')
+    else 
+    addRow(metadataTable, 'Author', '{{Al|' .. args.author  .. '}}')
+    end
+    else
+        html:wikitext('[[Category: Books without Author]]')
+    end
 
-if args.editor then
-if item then
-	addRow(metadataTable, 'Editor', withWikidataLink(args.editor))
- else
-   addRow(metadataTable, 'Editor', '{{Al|' .. args.editor .. '}}')
-end
-  else 
- end
 
-	addRow(metadataTable, 'Illustrator', withWikidataLink(args.illustrator))
+    if args.translator then
+    if item then
+        addRow(metadataTable, 'Translator', withWikidataLink(args.translator))
+        html:wikitext('[[Category: Books with Translator]]')
+    else 
+    addRow(metadataTable, 'Translator', '{{Al|' .. args.translator .. '}}')
+    end
+    else
+        html:wikitext('[[Category: Books without Translator]]')
+    end
 
-if args.publisher then
-if item then
-	addRow(metadataTable, 'Publisher', withWikidataLink(args.publisher))
-  else 
-   addRow(metadataTable, 'Publisher', '[[Publisher:' .. args.publisher .. '|' .. args.publisher .. ']]')
- end
- else
-end
 
- addRow(metadataTable, 'Published In', withWikidataLink(args.publishedin))
+    if args.editor then
+    if item then
+        addRow(metadataTable, 'Editor', withWikidataLink(args.editor))
+        html:wikitext('[[Category: Books with Editor]]')
+    else
+    addRow(metadataTable, 'Editor', '{{Al|' .. args.editor .. '}}')
+    end
+    else 
+        html:wikitext('[[Category: Books without Editor]]')
+    end
+    
+    if args.illustrator then
+        addRow(metadataTable, 'Illustrator', withWikidataLink(args.illustrator))
+        html:wikitext('[[Category: Books with Illustrator]]')
+    else 
+        html:wikitext('[[Category: Books without Illustrator]]')
+    end
 
-	addRow(metadataTable, 'Address', withWikidataLink(args.address))
+    if args.publisher then
+    if item then
+        addRow(metadataTable, 'Publisher', withWikidataLink(args.publisher))
+        html:wikitext('[[Category: Books with Publisher]]')
+    -- {{suppress categories|html:wikitext[[Category:No Publisher]]}} 
+    --    {{#invoke:Suppress categories|main|html:wikitext[[Category:No Publisher]]}} 
+    else 
+        addRow(metadataTable, 'Publisher', withWikidataLink(args.publisher))
+        html:wikitext('[[Category: Books with Publisher]]')
+    end
+    else
+            html:wikitext('[[Category: Books with No Publisher]]')
+
+    end
+
+
+    if args.publishedin then
+        addRow(metadataTable, 'Published In', withWikidataLink(args.publishedin))
+        html:wikitext('[[Category: Books with Published in country]]')
+    else 
+        html:wikitext('[[Category: Books without Published in country]]')
+    end
+
+    if args.address then
+        addRow(metadataTable, 'Address', withWikidataLink(args.address))
+        html:wikitext('[[Category: Books with Address]]')
+    else 
+        html:wikitext('[[Category: Books without Address]]')
+    end
 
     if args.year then
-	addRow(metadataTable, 'Year', withWikidataLink(args.year))
-else 
-end
+        addRow(metadataTable, 'Year', withWikidataLink(args.year))
+        html:wikitext('[[Category: Books with Year]]')
+    else 
+        html:wikitext('[[Category: Books without Year]]')
+    end
 
-	addRow(metadataTable, 'Printer', withWikidataLink(args.printer))
-	if args.source == 'djvu' or args.source == 'pdf' then
+
+    if args.printer then
+        addRow(metadataTable, 'Printer', withWikidataLink(args.printer))
+        html:wikitext('[[Category: Books with Printer]]')
+    else 
+        html:wikitext('[[Category: Books without Printer]]')
+    end
+
+
+    if args.source == 'djvu' or args.source == 'pdf' then
 		addRow(metadataTable, 'Source', '[[:File:' .. mw.title.getCurrentTitle().text .. '|' .. args.source .. ']]')
 
 		--add an indicator linking to the usages
-		local query = 'SELECT ?item ?itemLabel ?pages ?page WHERE {\n  ?item wdt:P996 <http://commons.wikimedia.org/wiki/Special:FilePath/' .. mw.uri.encode(mw.title.getCurrentTitle().text, 'PATH') .. '> .\n  OPTIONAL { ?page schema:about ?item ; schema:isPartOf <https://bn.wikisource.org/> . }\n  OPTIONAL { ?item wdt:P304 ?pages . }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],bn".\n}}'
-		html:wikitext('<indicator name="index-scan-wikidata">[[File:Wikidata Query Service Favicon.svg|20px|উইকিউপাত্ত আইটেম|link=https://query.wikidata.org/embed.html#' .. mw.uri.encode(query, 'PATH') .. ']]</indicator>')
+        local query = 'SELECT ?item ?itemLabel ?pages ?page WHERE {\n  ?item wdt:P996 <http://commons.wikimedia.org/wiki/Special:FilePath/' .. mw.uri.encode(mw.title.getCurrentTitle().text, 'PATH') .. '> .\n  OPTIONAL { ?page schema:about ?item ; schema:isPartOf <https://bn.wikisource.org/> . }\n  OPTIONAL { ?item wdt:P304 ?pages . }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],bn".\n}}'
+
+        html:wikitext('<indicator name="index-scan-wikidata">[[File:Wikidata Query Service Favicon.svg|20px|Wikidata items |link=https://query.wikidata.org/embed.html#' .. mw.uri.encode(query, 'PATH') .. ']]</indicator>')
 	else
 		addRow(metadataTable, 'Source', args.source)
 	end

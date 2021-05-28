@@ -205,6 +205,23 @@
         "header": true,
         "data": "year"
     },
+    "Key": {
+        "type": "string",
+        "size": 1,
+        "default": "",
+        "label": "Sort key",
+        "header": false,
+        "help": ""
+    },
+    "ISBN": {
+        "type": "isbn",
+        "size": 1,
+        "default": "",
+        "label": "International Standard Book Number",
+        "header": false,
+        "data": "identifier",
+        "help": ""
+   },    
     "Source": {
         "type": "string",
         "size": 1,
