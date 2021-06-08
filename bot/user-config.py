@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# This is a sample file. You should use generate_user_files.py
-# to create your user-config.py file.
-
-mylang = 'bn'
+mylang = 'pa'
 family = 'wikisource'
-usernames['wikisource']['bn'] = 'Tshrinivasan'
+usernames['wikisource']['pa'] = 'Tshrinivasan'
+usernames['wikidata']['wikidata'] = 'Tshrinivasan'

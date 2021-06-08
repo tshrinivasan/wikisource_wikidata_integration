@@ -34,60 +34,82 @@ def get_all_pages_in_category(lang,site,category):
 
 @logger.catch
 def get_mainpage_from_indexpage(lang,site,indexpage):
+    
     try:
         page = pywikibot.Page(pywikibot.Site(lang, site), indexpage)
-
-        if page:
-            text = page.get()
-            all_text_list = text.split("\n")
-            for item in all_text_list:
-                if item.startswith('|Title'):
-                    title = item.split("=")[1].replace('[[','').replace(']]','')
-            if title:
-                return title
-            else:
-                return None
-        else:
-            return None
     except:
         return None
+    if page:
+        text = page.get()
+        #print(text)
+        all_text_list = text.split("\n")
+        for item in all_text_list:
+            if item.startswith('|Title'):
+                print(item)
+                title = item.split("=")[1].replace('[[','').replace(']]','')
+        if title:
+            return title
+        else:
+            return None
+    else:
+         return None
+    #except:
+    #    return None
 
 @logger.catch
 def get_wikidata_item_of_page(lang,site,page):
-    try:
-        page = pw.Page(pw.Site(lang, site), page)
-        page_properties = page.properties()
-        if "wikibase_item" in page_properties:
-            wikidata_item = page_properties['wikibase_item']
-        else:
-            wikidata_item = None
-            return(wikidata_item)
-    except:
-        return None
+    
+    page = pw.Page(pw.Site(lang, site), page)
+    page_properties = page.properties()
+    print(page_properties)
+    if "wikibase_item" in page_properties:
+        wikidata_item = page_properties['wikibase_item']
+        return(wikidata_item)
+    else:
+        wikidata_item = None
+        return(wikidata_item)
+    #except:
+    #    return None
     
 @logger.catch
 def add_wikidata_to_indexpage_form(lang,site,indexpage, wikidata_item):
+    
+    page = pw.Page(pw.Site(lang, site), indexpage)
+    text = page.get()
+    counter = 0
+    print(text)
+#    sys.exit()
 
-    try:
-        page = pw.Page(pw.Site(lang, site), indexpage)
-        text = page.get()
+    if not "wikidata_item" in text:
+        new_lineitem = "|wikidata_item=" + wikidata_item + "\n"
+        
+        new_content = text.split("}}")[0]+ new_lineitem + "}}"
+        print(new_content)
 
-        counter = 0
+    if "wikidata_item" in text:
         all_text_list = text.split("\n")
-
+        #print(all_text_list)
         for item in all_text_list:
+            # print(item)
             if item.startswith('|wikidata_item'):
-                new_string = item.split("=")[0] + "=" +  wikidata_item
-                all_text_list[counter] = new_string
-                counter = counter + 1
+                existing_qid = item.split("=")[1]
+                if existing_qid:
+                    return existing_qid
+                else:
+                    new_string = item.split("=")[0] + "=" +  wikidata_item
+                
+                    all_text_list[counter] = new_string
+            counter = counter + 1
 
+            
         new_content = "\n".join(all_text_list)
-
+        print(new_content)
+#        sys.exit()
         page.text=new_content
         page.save("changed wikidata_item - from the bot")
         return "success"
-    except:
-        return None
+#    except:
+ #       return None
 
 @logger.catch 
 def set_indexpage_property_on_wikidata(qid,lang,wikisite,index_page):
@@ -97,7 +119,7 @@ def set_indexpage_property_on_wikidata(qid,lang,wikisite,index_page):
         item = pw.ItemPage(repo, qid) 
         claims = item.get(u'claims') 
         index_page = "https://" + lang + "."+ wikisite + ".org/wiki/" + index_page
-
+        index_page = index_page.replace(" ","_")
         if u'P1957' in claims[u'claims']: #indexpagfe
             pw.output(u'Error: Already have a Index page ID!')
             return "exists"
@@ -105,7 +127,7 @@ def set_indexpage_property_on_wikidata(qid,lang,wikisite,index_page):
             stringclaim = pw.Claim(repo, u'P1957') #Else, add the value
             #        target = pywikibot.ItemPage(repo, u"Q12451275") #Using another wikidata page (Cambridge (Q350))
             stringclaim.setTarget(index_page)
-            item.addClaim(stringclaim, summary=u'Adding Index page')
+            item.addClaim(stringclaim, summary=u'Adding Index page - from the bot')
             return "added"
     except:
         return None
@@ -132,15 +154,22 @@ def main():
             
             for page in all_pages:
                 logger.info(f"Getting main page for the index page {page}")
+                #page = "ਇੰਡੈਕਸ:ਕੌਡੀ ਬਾਡੀ ਦੀ ਗੁਲੇਲ - ਚਰਨ ਪੁਆਧੀ.pdf"
+                #page = "ਇੰਡੈਕਸ:Sohni Mahiwal - Qadir Yar.pdf"
                 mainpage = get_mainpage_from_indexpage(lang,site,page)
+                #sys.exit()
                 if mainpage:
                     logger.info(f"Success_2: Got the mainpage {mainpage} for indexpage {page}")
                     qid_of_page = get_wikidata_item_of_page(lang,site,mainpage)
+                    
                     if qid_of_page:
                         logger.info(f"Success_3: Wikidata id of the page {mainpage} is {qid_of_page}")
                         logger.info(f"Adding {qid_of_page} to {page}")
                         add_qid = add_wikidata_to_indexpage_form(lang,site,page,qid_of_page)
-                        if add_qid:
+                        logger.info(add_qid)
+                        if not add_qid =="success":
+                            logger.info(f"Already a wikidata_item is available. The avaliable value is {add_qid}")
+                        elif add_qid =="success":
                             logger.info(f"Success_4: added {qid_of_page} to {page}")
                             logger.info(f"Adding index page property {page} to {qid_of_page}")
                             add_index_to_qid = set_indexpage_property_on_wikidata(qid_of_page,lang,site,page)
@@ -150,12 +179,14 @@ def main():
                                 logger.info(f"Success_5: Added index page property {page} to {qid_of_page}")
                             else:
                                 logger.info(f"Fail_5.2: Got error on adding index page property {page} to {qid_of_page}")
+                
                         else:
                             logger.info(f"Fail_4: Got error on adding {qid_of_page} to {page}")
                     else:
                         logger.info(f"Fail_3: Got error on getting wikidata id of the page {mainpage}")
                 else:
                     logger.info(f"Fail_2: Got error on getting mainpage from the index page {page}")
+#                sys.exit()
         else:
             logger.info(f"Fail_1: Got error on getting all pages in the category {category}")
 
