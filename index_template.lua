@@ -195,19 +195,18 @@ function indexTemplate(frame)
     end
 
 
-    if args.publishedin then
-        addRow(metadataTable, 'Published In', withWikidataLink(args.publishedin))
-        html:wikitext('[[Category: Books with Published in country]]')
+     if args.address then
+        addRow(metadataTable, 'Address', withWikidataLink(args.address))
+        html:wikitext('[[Category:Books with Place of Publication]]')
     else 
-        html:wikitext('[[Category: Books without Published in country]]')
+        if args.publishedin then
+            addRow(metadataTable, 'Published In', withWikidataLink(args.publishedin))
+            html:wikitext('[[Category:Books with Place of Publication]]')
+          else 
+            html:wikitext('[[Category:Books without Place of Publication]]')
+        end
     end
 
-    if args.address then
-        addRow(metadataTable, 'Address', withWikidataLink(args.address))
-        html:wikitext('[[Category: Books with Address]]')
-    else 
-        html:wikitext('[[Category: Books without Address]]')
-    end
 
     if args.year then
         addRow(metadataTable, 'Year', withWikidataLink(args.year))
