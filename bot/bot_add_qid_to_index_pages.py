@@ -103,6 +103,7 @@ def add_wikidata_to_indexpage_form(lang,site,indexpage, wikidata_item):
         for item in all_text_list:
             # print(item)
             if item.startswith('|wikidata_item'):
+                
                 existing_qid = item.split("=")[1]
                 if existing_qid:
                     return existing_qid
@@ -161,7 +162,7 @@ def main():
         if all_pages:
             count_of_all_pages = len(all_pages)  
             logger.info(f"Success_1: Found  {count_of_all_pages}  pages in the category")
-
+                
             index_page_counter = 1
             for index_page_link in all_pages:
                 logger.info("\n\n")
@@ -169,6 +170,7 @@ def main():
                 logger.info("============")
                 logger.info(f"Processing item {index_page_counter} of {count_of_all_pages}")
                 time.sleep(500/1000)
+                
                 logger.info(f"Getting main page for the index page {index_page_link}")
                 index_page_link_title = index_page_link.title()
                 logger.info(f"index page URL = https://{lang}.{site}.org/wiki/{index_page_link_title}")
