@@ -141,6 +141,9 @@ function indexTemplate(frame)
     if item then
         addRow(metadataTable, 'Author', withWikidataLink(args.author))
         html:wikitext('[[Category: Books with Author]]')
+        local author = item:formatPropertyValues( 'P253075', { mw.wikibase.entity.claimRanks.RANK_NORMAL } )['value']
+        html:wikitext('[[Category: Books by ' .. author  ..  ']]')
+
     else 
     addRow(metadataTable, 'Author', '{{Al|' .. args.author  .. '}}')
     end
@@ -195,7 +198,7 @@ function indexTemplate(frame)
     end
 
 
-     if args.address then
+    if args.address then
         addRow(metadataTable, 'Address', withWikidataLink(args.address))
         html:wikitext('[[Category:Books with Place of Publication]]')
     else 
